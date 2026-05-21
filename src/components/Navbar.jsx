@@ -55,8 +55,8 @@ const Navbar = () => {
             <Image
               src="/doc-appoint-logo.png"
               alt="DocAppoint Logo"
-              width={32}
-              height={32}
+              width={42}
+              height={42}
             />  
             <p className="font-bold text-xl">DocAppoint</p>
           </div>
