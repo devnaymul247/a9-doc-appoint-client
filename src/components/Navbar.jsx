@@ -1,19 +1,27 @@
 'use client';
+import { authClient } from "@/lib/auth-client";
 import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FaUserDoctor } from "react-icons/fa6";
 
 
 const Navbar = () => {
+  const pathname = usePathname();
+  
+  const isActive = (href) => {
+    return pathname === href ? "text-[#0D7674] font-semibold" : "hover:text-[#0D7674]";
+  };
 
-  //   const userData = authClient.useSession();
-  // const user = userData.data?.user;
+    const userData = authClient.useSession();
+  const user = userData?.data?.user;
+// console.log(user);
 
-  // const handleSignOut = async () => {
-  //   await authClient.signOut();
-  // };
+  const handleSignOut = async () => {
+    await authClient.signOut();
+  };
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -61,62 +69,66 @@ const Navbar = () => {
             <p className="font-bold text-xl">DocAppoint</p>
           </div>
         </div>
-        <ul className="hidden items-center gap-4 md:flex">
+        <ul className="hidden items-center gap-4 md:flex font-semibold">
           <li>
-            <Link href="/" className="font-medium hover:text-[#0D7674] text-[#0D7674]" aria-current="page">
+            <Link href="/" className={isActive("/")} >
               Home
             </Link>
           </li>
           <li>
-            <Link href="/all-appointments" className="hover:text-[#0D7674]">All Appointments</Link>
+            <Link href="/all-appointments" className={isActive("/all-appointments")}>All Appointments</Link>
           </li>
           <li>
-            <Link href="/dashboard" className="hover:text-[#0D7674]">Dashboard</Link>
+            <Link href="/dashboard" className={isActive("/dashboard")}>Dashboard</Link>
           </li>
         </ul>
-        <div className="hidden items-center gap-4 md:flex">
-          <Link href="/signin" className="block py-2 text-center hover:text-[#0D7674]">
+        {user ? (
+          <div className="flex gap-3">
+              <Avatar size="sm">
+                <Avatar.Image
+                  alt="John Doe"
+                  src={user?.image}
+                  referrerPolicy="no-referrer"
+                />
+                <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+              </Avatar>
+
+              <Button onClick={handleSignOut} size="sm" variant="danger">SignOut</Button>
+            </div>
+        ) : (
+          <div className="hidden items-center gap-4 md:flex">
+          <Link href="/login" className="block py-2 text-center hover:text-[#0D7674] font-semibold">
                 Login
               </Link>
 
               <Link href="/signup" className="block py-2">
-              <Button className="bg-[#0D7674] hover:bg-[#0A5F5D]">Sign Up</Button>
+              <Button className="bg-[#0D7674] hover:bg-[#0A5F5D] font-semibold">Sign Up</Button>
               </Link>
         </div>
+        )}
       </header>
 
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
-          <ul className="flex flex-col gap-2 p-4">
+          <ul className="flex flex-col gap-2 p-4 font-semibold">
             <li>
-              <Link href="/" className="block py-2 font-medium text-[#0D7674]" aria-current="page">
+              <Link href="/" className={`block py-2 ${isActive("/")}`}>
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/all-appointments" className="block py-2 hover:text-[#0D7674]">
+              <Link href="/all-appointments" className={`block py-2 ${isActive("/all-appointments")}`}>
                 All Appointments
               </Link>
             </li>
             <li>
-              <Link href="/dashboard" className="block py-2 hover:text-[#0D7674]">
+              <Link href="/dashboard" className={`block py-2 ${isActive("/dashboard")}`}>
                 Dashboard
               </Link>
             </li>
           </ul>
-          
-          
-            <div className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
-              <Link href="/signin" className="block py-2 text-center hover:text-[#0D7674]">
-                Login
-              </Link>
 
-              <Link href="/signup" className="block py-2">
-              <Button className="w-full bg-[#0D7674] hover:bg-[#0A5F5D]">Sign Up</Button>
-              </Link>
-            </div>
-
-          {/* {'' && (
+          {user ? (
             <div className="flex gap-3">
               <Avatar size="sm">
                 <Avatar.Image
@@ -127,9 +139,20 @@ const Navbar = () => {
                 <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
               </Avatar>
 
-              <Button onClick={''} size="sm" variant="danger">SignOut</Button>
+              <Button onClick={handleSignOut} size="sm" variant="danger">SignOut</Button>
             </div>
-          )} */}
+          ) : (
+
+              <div className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
+              <Link href="/login" className="block py-2 text-center hover:text-[#0D7674]">
+                Login
+              </Link>
+
+              <Link href="/signup" className="block py-2">
+              <Button className="w-full bg-[#0D7674] hover:bg-[#0A5F5D] font-semibold">Sign Up</Button>
+              </Link>
+            </div>
+          )}
 
         </div>
       )}

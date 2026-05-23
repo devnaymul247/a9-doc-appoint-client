@@ -18,3 +18,6 @@ https://
 3. Hero UI
 4. React Icon
 5. Swiper js
+6. better-auth
+7. mongodb
+8. @better-auth/mongo-adapter
