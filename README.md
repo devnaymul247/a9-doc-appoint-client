@@ -21,3 +21,4 @@ https://
 6. better-auth
 7. mongodb
 8. @better-auth/mongo-adapter
+9. npm i @gravity-ui/icons

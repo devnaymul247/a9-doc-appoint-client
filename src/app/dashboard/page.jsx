@@ -1,4 +1,5 @@
 
+import { DeleteAlert } from '@/components/DeleteAlert';
 import UpdateBookingModal from '@/components/UpdateBookingModal';
 import { auth } from '@/lib/auth';
 import { Tabs } from '@heroui/react';
@@ -62,8 +63,10 @@ const dashboardPage = async () => {
                                 <div>
                                     <p className='flex items-center gap-2'><FaClock />{appointment.appointmentTime}</p>
                                 </div>
-                                <div className='mt-4'>
+                                <div className='mt-4 flex items-center gap-4'>
                                     <UpdateBookingModal appointment={appointment}></UpdateBookingModal>
+
+                                    <DeleteAlert appointment={appointment}></DeleteAlert>
                                 </div>
                             </div>
                         </div> )}

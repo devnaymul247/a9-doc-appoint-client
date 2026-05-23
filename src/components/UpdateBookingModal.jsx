@@ -1,6 +1,6 @@
 "use client";
 
-// import { refreshData } from "@/lib/action";
+import { refreshData } from "@/lib/action";
 import {
     Button,
     FieldError,
@@ -36,14 +36,14 @@ const UpdateBookingModal = ({ appointment }) => {
 
         const data = await res.json();
 
-        // refreshData(`/destinations/${_id}`); 
+        refreshData(`/dashboard/${_id}`); 
         // console.log(data);
     };
 
     return (
         <Modal>
 
-            <Button variant="outline" className={"rounded-none"}>
+            <Button variant="outline" className={"rounded-2xl"}>
                 <BiEdit /> Update
             </Button>
 
@@ -76,7 +76,8 @@ const UpdateBookingModal = ({ appointment }) => {
                                         </div>
 
                                         {/* Price */}
-                                        <TextField
+                                        <div className="md:col-span-2">
+                                            <TextField
                                             name="phone"
                                             defaultValue={phone}
                                             isRequired
@@ -89,6 +90,7 @@ const UpdateBookingModal = ({ appointment }) => {
                                             />
                                             <FieldError />
                                         </TextField>
+                                        </div>
 
                                         {/* Appointment Date */}
                                         <div className="md:col-span-2">
@@ -111,8 +113,8 @@ const UpdateBookingModal = ({ appointment }) => {
                                                 isRequired
                                                 defaultValue={appointmentTime}
                                             >
-                                                <Input type="time" className="rounded-2xl"  />
                                                 <Label>Appointment Time</Label>
+                                                <Input type="time" className="rounded-2xl"  />
                                                 <FieldError />
                                             </TextField>
                                         </div>
