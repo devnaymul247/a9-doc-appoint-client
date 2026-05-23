@@ -1,14 +1,11 @@
-
-// import { DeleteAlert } from "@/components/DeleteAlert";
-// import { auth } from "@/lib/auth";
-// import { headers } from "next/headers";
-// import { EditModal } from "@/components/EditModal";
+// import { auth } from '@/lib/auth';
 import Image from "next/image";
 import { FaBangladeshiTakaSign, FaRegCalendar } from "react-icons/fa6";
 import { LuMapPin } from "react-icons/lu";
-import AppointmentCard from "@/components/AppointmentCard";
-import { Button } from "@heroui/react";
-import { FiExternalLink } from "react-icons/fi";
+// import AppointmentCard from "@/components/AppointmentCard";
+// import { Button } from "@heroui/react";
+// import { FiExternalLink } from "react-icons/fi";
+import { BookNowModal } from "@/components/BookNowModal";
 
 const dorctorAppointmentDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -76,7 +73,8 @@ const dorctorAppointmentDetailsPage = async ({ params }) => {
                     </div>
 
                     <div className="flex justify-end">
-                        <Button variant="ghost" className={'mt-4 text-[#0D7674] border border-[#0D7674]'}> Book Appointment</Button>
+                        
+                        <BookNowModal appointment={appointment}></BookNowModal>
                     </div>
 
                     <h1 className="mt-10 text-2xl font-bold">Overview</h1>
