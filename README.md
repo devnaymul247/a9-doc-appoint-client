@@ -22,3 +22,4 @@ https://
 7. mongodb
 8. @better-auth/mongo-adapter
 9. npm i @gravity-ui/icons
+10. npm i --save react-toastify

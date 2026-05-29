@@ -14,6 +14,7 @@ import {
   TextArea,
   TextField,
   Select,
+  toast,
 } from "@heroui/react";
 // import { refresh } from "next/cache";
 import { MdBookmarkAdd } from "react-icons/md";
@@ -47,7 +48,13 @@ export function BookNowModal({ appointment }) {
     
     // revalidatePath(`/destinations/${_id}`);
     // refreshData(`/destinations/${_id}`); 
-    // console.log(data);
+    console.log(data);
+
+    if (data?.acknowledged) {
+      toast.success("Appointment booked successfully");
+    } else {
+      toast.error("Failed to book appointment");
+    }
   };
   return (
     <Modal>

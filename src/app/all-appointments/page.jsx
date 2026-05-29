@@ -1,5 +1,11 @@
 import AppointmentCard from "@/components/AppointmentCard";
 
+// SEO - meta data
+export const metadata = {
+  title: "All Appointments - DocAppoint",
+  description: "View all doctor appointments on DocAppoint",
+};
+
 const DoctorAppointmentsPage =  async () => {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/doctor-appointments`, {

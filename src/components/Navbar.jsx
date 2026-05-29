@@ -1,6 +1,6 @@
 'use client';
 import { authClient } from "@/lib/auth-client";
-import { Avatar, Button } from "@heroui/react";
+import { Avatar, Button, toast } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,6 +21,9 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     await authClient.signOut();
+
+    toast.success("Signed out successfully");
+    window.location.reload();
   };
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);

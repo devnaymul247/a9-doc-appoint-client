@@ -9,7 +9,7 @@ const AppointmentCard = ({ appointment }) => {
     const { _id, image, fee, name, availability, location, hospital, description, experience, specialty } = appointment;
 
   return (
-    <div className="border border-gray-200 rounded-2xl overflow-hidden">
+    <div className="border border-gray-200 rounded-2xl overflow-hidden shadow-md">
       <div className="relative w-full aspect-square">
         <Image
         className="object-cover"

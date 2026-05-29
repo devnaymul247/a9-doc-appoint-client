@@ -1,7 +1,8 @@
 "use client";
 
+import { refreshData } from "@/lib/action";
 import { TrashBin } from "@gravity-ui/icons";
-import { AlertDialog, Button } from "@heroui/react";
+import { AlertDialog, Button, toast } from "@heroui/react";
 import { redirect } from "next/navigation";
 
 export function DeleteAlert({ appointment }) {
@@ -17,8 +18,15 @@ export function DeleteAlert({ appointment }) {
     });
 
     const data = await res.json();
-    redirect('/dashboard');
-    // console.log(data);
+    refreshData(`/dashboard/${_id}`);
+    // redirect('/dashboard');
+    console.log(data);
+
+    if (data?.acknowledged) {
+          toast.success("Appointment deleted successfully");
+        } else {
+          toast.error("Failed to delete appointment");
+        }
   };
   return (
     <AlertDialog>

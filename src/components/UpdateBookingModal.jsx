@@ -12,6 +12,7 @@ import {
     TextArea,
     TextField,
     Select,
+    toast,
 } from "@heroui/react";
 // import { refresh } from "next/cache";
 import { BiEdit } from "react-icons/bi";
@@ -38,6 +39,12 @@ const UpdateBookingModal = ({ appointment }) => {
 
         refreshData(`/dashboard/${_id}`); 
         // console.log(data);
+
+        if (data?.acknowledged) {
+              toast.success("Appointment updated successfully");
+            } else {
+              toast.error("Failed to update appointment");
+            }
     };
 
     return (

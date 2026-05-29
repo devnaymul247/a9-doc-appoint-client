@@ -1,12 +1,14 @@
 import Banner from "@/components/Banner";
-import Navbar from "@/components/Navbar";
-import Image from "next/image";
+import WhatPatientSaySection from "@/components/WhatPatientSaySection";
+import WhyChooseSection from "@/components/WhyChooseSection";
 
 export default function Home() {
   return (
     <div>
       
       <Banner />
+      <WhyChooseSection></WhyChooseSection>
+      <WhatPatientSaySection></WhatPatientSaySection>
     </div>
   );
 }

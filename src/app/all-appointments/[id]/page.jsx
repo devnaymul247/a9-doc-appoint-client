@@ -7,6 +7,12 @@ import { LuMapPin } from "react-icons/lu";
 // import { FiExternalLink } from "react-icons/fi";
 import { BookNowModal } from "@/components/BookNowModal";
 
+// SEO - meta data
+export const metadata = {
+  title: "Doctor Appointment Details - DocAppoint",
+  description: "View details of a specific doctor appointment on DocAppoint",
+};
+
 const dorctorAppointmentDetailsPage = async ({ params }) => {
     const { id } = await params;
 
