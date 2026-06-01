@@ -7,6 +7,7 @@ import React from 'react';
 import { FaClock, FaRegCalendar } from 'react-icons/fa6';
 import UpdateProfileModal from '@/components/UpdateProfileModal';
 import { headers } from 'next/headers';
+import SubmitReviewModal from '@/components/SubmitReviewModal';
 
 // SEO - meta data
 export const metadata = {
@@ -84,6 +85,8 @@ const dashboardPage = async () => {
                                         <p className='flex items-center gap-2'><FaClock />{appointment.appointmentTime}</p>
                                     </div>
                                     <div className='mt-4 flex items-center gap-4'>
+                                        <SubmitReviewModal appointment={appointment}></SubmitReviewModal>
+
                                         <UpdateBookingModal appointment={appointment}></UpdateBookingModal>
 
                                         <DeleteAlert appointment={appointment}></DeleteAlert>

@@ -19,8 +19,8 @@ import {
 // import { refresh } from "next/cache";
 import { MdBookmarkAdd } from "react-icons/md";
 
-export function BookNowModal({ appointment }) {
-  const { name } = appointment;
+export function BookNowModal({ allAppointments }) {
+  const { name, id } = allAppointments;
 
   const userData = authClient.useSession();
   const user = userData?.data?.user;
@@ -34,7 +34,8 @@ export function BookNowModal({ appointment }) {
 
     const bookingData = {
       userEmail: user?.email,
-      doctorName: name, ...booking
+      doctorName: name,
+      doctorID: id, ...booking
     }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
@@ -51,7 +52,7 @@ export function BookNowModal({ appointment }) {
     console.log(data);
 
     if (data?.acknowledged) {
-      toast.success("Appointment booked successfully");
+      toast.success(`Appointment booked successfully, visit dashboard to manage your appointments`);
     } else {
       toast.error("Failed to book appointment");
     }

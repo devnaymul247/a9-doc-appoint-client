@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toast } from "@heroui/react";
+import { Providers } from "./providers";
 
 const OutfitFont = Outfit({
   subsets: ["latin"],
@@ -30,16 +31,20 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${OutfitFont.className} h-full antialiased`}
+      className={`${OutfitFont.className} h-full antialiased light`}
+      data-theme="light"
+      suppressHydrationWarning={true}
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main>
-          {children}
-        </main>
-        <Footer />
-        <Toast.Provider />
-        </body>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <Providers>
+          <Navbar />
+          <main>
+            {children}
+          </main>
+          <Footer />
+          <Toast.Provider />
+        </Providers>
+      </body>
     </html>
   );
 }

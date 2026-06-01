@@ -1,4 +1,5 @@
 import AppointmentCard from "@/components/AppointmentCard";
+import AppointmentSearch from "@/components/AppointmentSearch";
 
 // SEO - meta data
 export const metadata = {
@@ -23,9 +24,7 @@ const DoctorAppointmentsPage =  async () => {
             <p className="text-center text-muted-foreground mb-8">
                 Find the right doctor for you and book your appointment today!
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {appointments.map(appointment => <AppointmentCard key={appointment._id} appointment={appointment} />)}
-            </div>
+            <AppointmentSearch appointments={appointments} />
         </div>
     );
 };

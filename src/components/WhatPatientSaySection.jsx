@@ -42,7 +42,7 @@ const reviews = [
 
 const WhatPatientSaySection = () => {
   return (
-    <section className="bg-gray-50 py-12">
+    <section className=" py-12">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-10">
           <p className="text-sm uppercase tracking-[0.3em] text-[#0D7674]">Patient Reviews</p>

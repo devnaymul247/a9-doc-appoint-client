@@ -26,7 +26,7 @@ const features = [
 
 const WhyChooseSection = () => {
     return (
-        <section className="bg-white">
+        <section className=" py-12">
             <div className="max-w-7xl mx-auto px-6 py-12">
                 <div className="text-center">
                     <h2 className="text-3xl font-bold text-[#0D7674]">Why Choose DocAppoint</h2>

@@ -28,11 +28,11 @@ const dorctorAppointmentDetailsPage = async ({ params }) => {
             // 'authorization': `Bearer ${token}`
         }
     });
-
-    const appointment = await res.json()
+    const allAppointments = await res.json()
     // console.log(appointment);
+    
     const { image, fee, name, availability, location, hospital, description, experience, specialty } =
-    appointment;
+    allAppointments;
 
     return (
         <div className="max-w-7xl mx-auto">
@@ -80,7 +80,7 @@ const dorctorAppointmentDetailsPage = async ({ params }) => {
 
                     <div className="flex justify-end">
                         
-                        <BookNowModal appointment={appointment}></BookNowModal>
+                        <BookNowModal allAppointments={allAppointments}></BookNowModal>
                     </div>
 
                     <h1 className="mt-10 text-2xl font-bold">Overview</h1>

@@ -1,23 +1,27 @@
 'use client';
 import { authClient } from "@/lib/auth-client";
 import { Avatar, Button, toast } from "@heroui/react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { FaUserDoctor } from "react-icons/fa6";
+import { FaMoon, FaUserDoctor } from "react-icons/fa6";
+import { FiSun } from "react-icons/fi";
 
 
 const Navbar = () => {
+  const { theme, setTheme } = useTheme();
+
   const pathname = usePathname();
-  
+
   const isActive = (href) => {
     return pathname === href ? "text-[#0D7674] font-semibold" : "hover:text-[#0D7674]";
   };
 
-    const userData = authClient.useSession();
+  const userData = authClient.useSession();
   const user = userData?.data?.user;
-// console.log(user);
+  // console.log(user);
 
   const handleSignOut = async () => {
     await authClient.signOut();
@@ -26,7 +30,7 @@ const Navbar = () => {
     window.location.reload();
   };
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
@@ -68,7 +72,7 @@ const Navbar = () => {
               alt="DocAppoint Logo"
               width={42}
               height={42}
-            />  
+            />
             <p className="font-bold text-xl">DocAppoint</p>
           </div>
         </div>
@@ -87,27 +91,31 @@ const Navbar = () => {
         </ul>
         {user ? (
           <div className="flex gap-3">
-              <Avatar size="sm">
-                <Avatar.Image
-                  alt="John Doe"
-                  src={user?.image}
-                  referrerPolicy="no-referrer"
-                />
-                <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
-              </Avatar>
+            <Avatar size="sm">
+              <Avatar.Image
+                alt="John Doe"
+                src={user?.image}
+                referrerPolicy="no-referrer"
+              />
+              <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+            </Avatar>
 
-              <Button onClick={handleSignOut} size="sm" variant="danger">SignOut</Button>
-            </div>
+            <Button onClick={handleSignOut} size="sm" variant="danger">SignOut</Button>
+
+            <Button size="sm" variant="tertiary" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+              {theme === "dark" ? <FiSun /> : <FaMoon />} {theme === "dark" ? "Light" : "Dark"} Mode
+            </Button>
+          </div>
         ) : (
           <div className="hidden items-center gap-4 md:flex">
-          <Link href="/login" className="block py-2 text-center hover:text-[#0D7674] font-semibold">
-                Login
-              </Link>
+            <Link href="/login" className="block py-2 text-center hover:text-[#0D7674] font-semibold">
+              Login
+            </Link>
 
-              <Link href="/signup" className="block py-2">
+            <Link href="/signup" className="block py-2">
               <Button className="bg-[#0D7674] hover:bg-[#0A5F5D] font-semibold">Sign Up</Button>
-              </Link>
-        </div>
+            </Link>
+          </div>
         )}
       </header>
 
@@ -146,13 +154,13 @@ const Navbar = () => {
             </div>
           ) : (
 
-              <div className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
+            <div className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
               <Link href="/login" className="block py-2 text-center hover:text-[#0D7674]">
                 Login
               </Link>
 
               <Link href="/signup" className="block py-2">
-              <Button className="w-full bg-[#0D7674] hover:bg-[#0A5F5D] font-semibold">Sign Up</Button>
+                <Button className="w-full bg-[#0D7674] hover:bg-[#0A5F5D] font-semibold">Sign Up</Button>
               </Link>
             </div>
           )}
