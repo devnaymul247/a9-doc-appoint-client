@@ -33,11 +33,7 @@ const dorctorAppointmentDetailsPage = async ({ params }) => {
 
     return (
         <div className="max-w-7xl mx-auto">
-            <div className="flex  items-center gap-3 justify-end mt-5 mb-3">
-                {/* <EditModal appointment={appointment} />
-                <DeleteAlert appointment={appointment} /> */}
-            </div>
-            <div className="flex  items-center gap-3 justify-start mt-5 mb-3">
+            <div className="flex  items-center gap-3 justify-start flex-wrap mt-5 mb-8">
                 <Image
                 className="w-full max-h-[600px] max-w-[500px] object-cover"
                 alt={name}
@@ -84,13 +80,8 @@ const dorctorAppointmentDetailsPage = async ({ params }) => {
 
                     <p className="max-w-6xl">{description}</p>
                 </div>
-
-
-                {/* <AppointmentCard appointment={appointment} /> */}
             </div>
             </div>
-
-
         </div>
     );
 };

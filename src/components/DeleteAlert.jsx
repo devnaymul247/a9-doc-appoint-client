@@ -20,7 +20,7 @@ export function DeleteAlert({ appointment, token }) {
     const data = await res.json();
     refreshData(`/dashboard/${_id}`);
     // redirect('/dashboard');
-    console.log(data);
+    // console.log(data);
 
     if (data?.acknowledged) {
           toast.success("Appointment deleted successfully");

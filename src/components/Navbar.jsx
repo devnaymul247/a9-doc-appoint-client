@@ -90,7 +90,7 @@ const Navbar = () => {
           </li>
         </ul>
         {user ? (
-          <div className="flex gap-3">
+          <div className="hidden md:flex items-center gap-3">
             <Avatar size="sm">
               <Avatar.Image
                 alt="John Doe"

@@ -50,7 +50,7 @@ export function BookNowModal({ allAppointments, token }) {
     
     // revalidatePath(`/destinations/${_id}`);
     // refreshData(`/destinations/${_id}`); 
-    console.log(data);
+    // console.log(data);
 
     if (data?.acknowledged) {
       toast.success(`Appointment booked successfully, visit dashboard to manage your appointments`);

@@ -73,7 +73,7 @@ const dashboardPage = async () => {
                                     <div>
                                         <p className='flex items-center gap-2'><FaClock />{appointment.appointmentTime}</p>
                                     </div>
-                                    <div className='mt-4 flex items-center gap-4'>
+                                    <div className='mt-4 flex items-center gap-4 flex-wrap'>
                                         <SubmitReviewModal appointment={appointment} token={token}></SubmitReviewModal>
 
                                         <UpdateBookingModal appointment={appointment} token={token}></UpdateBookingModal>
