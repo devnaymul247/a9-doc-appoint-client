@@ -11,7 +11,7 @@ import {
 } from "@heroui/react";
 import { FcRating } from "react-icons/fc";
 
-const SubmitReviewModal = ({ appointment }) => {
+const SubmitReviewModal = ({ appointment, token }) => {
     // console.log(appointment.doctorID);
     const onSubmit = async (e) => {
     
@@ -23,6 +23,7 @@ const SubmitReviewModal = ({ appointment }) => {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",
+                    "authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify(ratingData),
             });
