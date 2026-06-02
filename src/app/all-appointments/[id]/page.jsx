@@ -33,7 +33,7 @@ const dorctorAppointmentDetailsPage = async ({ params }) => {
 
     return (
         <div className="max-w-7xl mx-auto">
-            <div className="flex  items-center gap-3 justify-start flex-wrap mt-5 mb-8">
+            <div className="flex  items-center gap-3 justify-start flex-wrap md:flex-nowrap mt-5 mb-8">
                 <Image
                 className="w-full max-h-[600px] max-w-[500px] object-cover"
                 alt={name}

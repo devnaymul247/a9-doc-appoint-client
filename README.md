@@ -2,7 +2,7 @@
 Doctor Appointment Manager(DocAppoint)
 
 ## live site URL:
-https://
+https://a9-doc-appoint-client.vercel.app
 
 ## Website Features:
 1. user signin & signup option
@@ -23,3 +23,6 @@ https://
 8. @better-auth/mongo-adapter
 9. npm i @gravity-ui/icons
 10. npm i --save react-toastify
+
+## extra
+To duplicate of .env file for vercel: cp .env .env.production

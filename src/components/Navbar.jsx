@@ -66,15 +66,15 @@ const Navbar = () => {
               )}
             </svg>
           </button>
-          <div className="flex items-center gap-3">
-            <Image
-              src="/doc-appoint-logo.png"
-              alt="DocAppoint Logo"
-              width={42}
-              height={42}
-            />
-            <p className="font-bold text-xl">DocAppoint</p>
-          </div>
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/doc-appoint-logo.png"
+                alt="DocAppoint Logo"
+                width={40}
+                height={40}
+              />
+              <p className="font-bold text-xl text-[#0D7674]">DocAppoint</p>
+            </Link>
         </div>
         <ul className="hidden items-center gap-4 md:flex font-semibold">
           <li>
