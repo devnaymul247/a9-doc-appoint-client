@@ -19,7 +19,7 @@ import {
 // import { refresh } from "next/cache";
 import { MdBookmarkAdd } from "react-icons/md";
 
-export function BookNowModal({ allAppointments }) {
+export function BookNowModal({ allAppointments, token }) {
   const { name, id } = allAppointments;
 
   const userData = authClient.useSession();
@@ -42,6 +42,7 @@ export function BookNowModal({ allAppointments }) {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        "authorization": `Bearer ${token}`
       },
       body: JSON.stringify(bookingData),
     });

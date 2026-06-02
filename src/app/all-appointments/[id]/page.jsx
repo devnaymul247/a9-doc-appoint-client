@@ -77,7 +77,7 @@ const dorctorAppointmentDetailsPage = async ({ params }) => {
 
                     <div className="flex justify-end">
                         
-                        <BookNowModal allAppointments={allAppointments}></BookNowModal>
+                        <BookNowModal allAppointments={allAppointments} token={token}></BookNowModal>
                     </div>
 
                     <h1 className="mt-10 text-2xl font-bold">Overview</h1>

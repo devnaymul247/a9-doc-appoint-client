@@ -12,7 +12,7 @@ import {
 import { FcRating } from "react-icons/fc";
 
 const SubmitReviewModal = ({ appointment }) => {
-    console.log(appointment.doctorID);
+    // console.log(appointment.doctorID);
     const onSubmit = async (e) => {
     
             e.preventDefault();

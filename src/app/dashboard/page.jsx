@@ -20,34 +20,23 @@ const dashboardPage = async () => {
     const session = await auth.api.getSession({
         headers: await headers(),
     });
+    // console.log(session);
     const user = session?.user;
 
-    //   const { token } = await auth.api.getToken({
-    //     headers: await headers(),
-    //   });
+      const { token } = await auth.api.getToken({
+        headers: await headers(),
+      });
 
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user?.email}`, {
         method: 'GET',
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            'authorization': `Bearer ${token}`
         }
     })
     const appointments = await res.json()
     // console.log(appointments);
-
-    
-
-        // const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/profile`, {
-        //     method: "PATCH",
-        //     headers: {
-        //         "content-type": "application/json",
-        //     },
-        //     body: JSON.stringify(profileData),
-        // });
-
-        // const data = await res.json();
-        // console.log(data);
 
     return (
         <div className="max-w-7xl mx-auto">
@@ -89,7 +78,7 @@ const dashboardPage = async () => {
 
                                         <UpdateBookingModal appointment={appointment}></UpdateBookingModal>
 
-                                        <DeleteAlert appointment={appointment}></DeleteAlert>
+                                        <DeleteAlert appointment={appointment} token={token}></DeleteAlert>
                                     </div>
                                 </div>
                             </div>)}

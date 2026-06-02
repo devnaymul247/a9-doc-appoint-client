@@ -5,7 +5,7 @@ import { TrashBin } from "@gravity-ui/icons";
 import { AlertDialog, Button, toast } from "@heroui/react";
 import { redirect } from "next/navigation";
 
-export function DeleteAlert({ appointment }) {
+export function DeleteAlert({ appointment, token }) {
   const { _id, doctorName } = appointment;
 
   const handleDelete = async () => {
@@ -13,6 +13,7 @@ export function DeleteAlert({ appointment }) {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
+        "authorization": `Bearer ${token}`
       },
     //   credentials: "include"
     });
