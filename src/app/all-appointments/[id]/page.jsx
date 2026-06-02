@@ -1,11 +1,9 @@
-// import { auth } from '@/lib/auth';
+import { auth } from '@/lib/auth';
 import Image from "next/image";
 import { FaBangladeshiTakaSign, FaRegCalendar } from "react-icons/fa6";
 import { LuMapPin } from "react-icons/lu";
-// import AppointmentCard from "@/components/AppointmentCard";
-// import { Button } from "@heroui/react";
-// import { FiExternalLink } from "react-icons/fi";
 import { BookNowModal } from "@/components/BookNowModal";
+import { headers } from 'next/headers';
 
 // SEO - meta data
 export const metadata = {
@@ -15,21 +13,20 @@ export const metadata = {
 
 const dorctorAppointmentDetailsPage = async ({ params }) => {
     const { id } = await params;
-
-    // const {token} = await auth.api.getToken({
-    //     headers: await headers(),
-    // });
+    // JWT
+    const {token} = await auth.api.getToken({
+        headers: await headers(),
+    });
     // console.log(token);
-
+    // JWT
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/doctor-appointments/${id}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
-            // 'authorization': `Bearer ${token}`
+            'authorization': `Bearer ${token}`
         }
     });
     const allAppointments = await res.json()
-    // console.log(appointment);
     
     const { image, fee, name, availability, location, hospital, description, experience, specialty } =
     allAppointments;
