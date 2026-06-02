@@ -17,7 +17,7 @@ import {
 // import { refresh } from "next/cache";
 import { BiEdit } from "react-icons/bi";
 
-const UpdateBookingModal = ({ appointment }) => {
+const UpdateBookingModal = ({ appointment, token }) => {
     const { _id, patientName, phone, appointmentDate, appointmentTime } = appointment;
 
     const onSubmit = async (e) => {
@@ -30,6 +30,7 @@ const UpdateBookingModal = ({ appointment }) => {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",
+                "authorization": `Bearer ${token}`
             },
             body: JSON.stringify(appointmentData),
         });

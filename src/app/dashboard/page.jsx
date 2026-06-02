@@ -76,7 +76,7 @@ const dashboardPage = async () => {
                                     <div className='mt-4 flex items-center gap-4'>
                                         <SubmitReviewModal appointment={appointment}></SubmitReviewModal>
 
-                                        <UpdateBookingModal appointment={appointment}></UpdateBookingModal>
+                                        <UpdateBookingModal appointment={appointment} token={token}></UpdateBookingModal>
 
                                         <DeleteAlert appointment={appointment} token={token}></DeleteAlert>
                                     </div>
