@@ -4,6 +4,9 @@ import { FaBangladeshiTakaSign, FaRegCalendar } from "react-icons/fa6";
 import { LuMapPin } from "react-icons/lu";
 import { BookNowModal } from "@/components/BookNowModal";
 import { headers } from 'next/headers';
+// import dynamic from 'next/dynamic';
+
+// const BookNowModal = dynamic(() => import('@/components/BookNowModal'))
 
 // SEO - meta data
 export const metadata = {

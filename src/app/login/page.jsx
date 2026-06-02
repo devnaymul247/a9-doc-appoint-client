@@ -12,10 +12,16 @@ import {
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 
 const LoginPage = () => {
+  // ==== to redirect user to the page they wanted to access after login ====
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get('redirect')
+  // ==== to redirect user to the page they wanted to access after login ====
+  
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -28,7 +34,8 @@ const LoginPage = () => {
     });
 
     if (data) {
-      redirect('/')
+      // redirect('/')
+      router.push(redirectTo);
     }
 
     if (error) {
