@@ -3,7 +3,6 @@
 import { refreshData } from "@/lib/action";
 import { TrashBin } from "@gravity-ui/icons";
 import { AlertDialog, Button, toast } from "@heroui/react";
-import { redirect } from "next/navigation";
 
 export function DeleteAlert({ appointment, token }) {
   const { _id, doctorName } = appointment;
